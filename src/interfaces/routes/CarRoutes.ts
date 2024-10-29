@@ -11,4 +11,4 @@ router.post("/car", (req, res) => controllers.create(req, res));
 router.put("/car", (req, res) => controllers.update(req, res));
 router.get("/car", (req, res) => controllers.delete(req, res));
 
-export { router as bookRoutes };
+export { router as carRoutes };

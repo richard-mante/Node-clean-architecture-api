@@ -1,5 +1,7 @@
 import { DIContainer } from "../../infrastructure/Dependencies/DIContainer";
 import { Request, Response } from "express";
+import { CreatBookDto } from "../dto/CreateBookDto";
+import { validate } from "class-validator";
 
 export class CarControllers {
   private getAllCars = DIContainer.getAllCars();
@@ -15,12 +17,18 @@ export class CarControllers {
 
   async getById(req: Request, res: Response) {
     let car = await this.getCarById.execute(req.params.id);
-    res.status(200);
+    res.status(200).json(car);
   }
 
   async create(req: Request, res: Response) {
-    let car = await this.createCar.execute(req.body);
-    res.status(201);
+    const dto = Object.assign(new CreatBookDto(), req.body);
+    const errors = await validate(dto);
+    if (errors.length > 0) {
+      res.status(400).json();
+    } else {
+      let car = await this.createCar.execute(req.body);
+      res.status(201);
+    }
   }
 
   async update(req: Request, res: Response) {
