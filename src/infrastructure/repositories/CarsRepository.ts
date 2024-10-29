@@ -1,59 +1,28 @@
 import { PrismaClient } from "@prisma/client";
 import { Car } from "../../domain/entities/Car";
 import { ICar } from "../../domain/interfaces/ICar";
+import { CarDb } from "../database/CarDb";
 
 export class CarsRepository implements ICar {
   private prisma = new PrismaClient();
-
+  private db = new CarDb();
   async getAllCars(): Promise<Array<Car>> {
-    const cars = await this.prisma.car.findMany();
-    return cars;
+    return await this.db.getAll();
   }
 
   async getCarById(id: number): Promise<Car | null> {
-    const car = await this.prisma.car.findFirst({
-      where: {
-        id: id,
-      },
-    });
-    if (car) {
-      return car;
-    }
-    return null;
+    return await this.db.getById(id);
   }
 
   async updateCar(car: Car): Promise<Car> {
-    const update = await this.prisma.car.update({
-      where: {
-        id: car.id,
-      },
-      data: {
-        name: car.name,
-        brand: car.brand,
-        model: car.model,
-      },
-    });
-
-    return update;
+    return await this.db.update(car);
   }
 
   async createCar(car: Car): Promise<Car> {
-    const created = await this.prisma.car.create({
-      data: {
-        name: car.name,
-        brand: car.brand,
-        model: car.model,
-      },
-    });
-    return created;
+    return await this.db.create(car);
   }
 
   async deleteCar(id: number): Promise<Car> {
-    const car = await this.prisma.car.delete({
-      where: {
-        id: id,
-      },
-    });
-    return car;
+    return await this.db.delete(id);
   }
 }
