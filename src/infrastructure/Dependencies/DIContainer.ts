@@ -7,12 +7,12 @@ import { CarsRepository } from "../repositories/CarsRepository";
 
 export class DIContainer {
   private static _carRepository = new CarsRepository();
-
   static getCarRepository() {
     return this._carRepository;
   }
 
   static getAllCars() {
+    
     return new GetAllCars(this.getCarRepository());
   }
 

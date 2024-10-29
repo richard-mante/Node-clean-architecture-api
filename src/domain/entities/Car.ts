@@ -1,8 +1,8 @@
 export class Car {
   constructor(
-    public id: Number,
-    public name: String,
-    public brand: String,
-    public model: String
+    public readonly id: number,
+    public name: string,
+    public brand: string,
+    public model: string
   ) {}
 }
