@@ -1,4 +1,4 @@
-import { ICar } from "../domain/interfaces/ICar";
+import { ICar } from "../../domain/interfaces/ICar";
 
 export class GetCarById {
   constructor(private carRepository: ICar) {}

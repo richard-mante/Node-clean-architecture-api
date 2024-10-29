@@ -1,6 +1,6 @@
 import { DIContainer } from "../../infrastructure/Dependencies/DIContainer";
 import { Request, Response } from "express";
-import { CreatBookDto } from "../dto/CreateBookDto";
+import { CreatCarDto } from "../../application/dto/CreateCarDto";
 import { validate } from "class-validator";
 
 export class CarControllers {
@@ -22,7 +22,7 @@ export class CarControllers {
   }
 
   async create(req: Request, res: Response) {
-    const dto = Object.assign(new CreatBookDto(), req.body);
+    const dto = Object.assign(new CreatCarDto(), req.body);
     const errors = await validate(dto);
     if (errors.length > 0) {
       res.status(400).json();

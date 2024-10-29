@@ -1,5 +1,5 @@
-import { Car } from "../domain/entities/Car";
-import { ICar } from "../domain/interfaces/ICar";
+import { Car } from "../../domain/entities/Car";
+import { ICar } from "../../domain/interfaces/ICar";
 
 export class CreateCar {
   constructor(private carRepositoy: ICar) {}

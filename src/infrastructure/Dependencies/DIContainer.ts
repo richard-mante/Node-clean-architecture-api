@@ -1,8 +1,10 @@
-import { CreateCar } from "../../use-cases/CreateCar";
-import { DeleteCar } from "../../use-cases/DeleteCar";
-import { GetAllCars } from "../../use-cases/GetAllCars";
-import { GetCarById } from "../../use-cases/GetCarById";
-import { UpdateCar } from "../../use-cases/UpdateCar";
+
+
+import { CreateCar } from "../../application/use-cases/CreateCar";
+import { DeleteCar } from "../../application/use-cases/DeleteCar";
+import { GetAllCars } from "../../application/use-cases/GetAllCars";
+import { GetCarById } from "../../application/use-cases/GetCarById";
+import { UpdateCar } from "../../application/use-cases/UpdateCar";
 import { CarsRepository } from "../repositories/CarsRepository";
 
 export class DIContainer {
