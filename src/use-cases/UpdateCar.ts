@@ -5,6 +5,6 @@ export class UpdateCar {
   constructor(private carRepository: ICar) {}
 
   async execute(car: Car) {
-    await this.carRepository.updateCar(car);
+    return await this.carRepository.updateCar(car);
   }
 }

@@ -4,6 +4,6 @@ export class GetAllCars {
   constructor(private carRepository: ICar) {}
 
   async execute() {
-    await this.carRepository.getAllCars();
+    return await this.carRepository.getAllCars();
   }
 }

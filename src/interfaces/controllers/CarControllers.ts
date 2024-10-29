@@ -16,7 +16,8 @@ export class CarControllers {
   }
 
   async getById(req: Request, res: Response) {
-    let car = await this.getCarById.execute(req.params.id);
+    const { id } = req.params;
+    let car = await this.getCarById.execute(Number(id));
     res.status(200).json(car);
   }
 
@@ -27,17 +28,18 @@ export class CarControllers {
       res.status(400).json();
     } else {
       let car = await this.createCar.execute(req.body);
-      res.status(201);
+      res.status(201).json(car);
     }
   }
 
   async update(req: Request, res: Response) {
-    await this.updateCar.execute(req.body);
-    res.status(200);
+    let car = await this.updateCar.execute(req.body);
+    res.status(200).json(car);
   }
 
   async delete(req: Request, res: Response) {
-    let car = await this.deleteCar.execute(req.params.id);
+    let { id } = req.params;
+    let car = await this.deleteCar.execute(Number(id));
     res.status(200);
   }
 }
