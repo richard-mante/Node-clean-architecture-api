@@ -9,7 +9,7 @@ services:
       dockerfile: Dockerfile
     restart: always
     ports:
-      - "4000:4000"
+      - "4500:4500"
     environment:
       - DATABASE_URL=postgres://postgres:postgres@db2:5432/postgres     
   db2:
